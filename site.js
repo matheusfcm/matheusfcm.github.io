@@ -1,3 +1,6 @@
+localStorage.setItem("It's a secret to everybody.", "Hasta la vista Baby.");
+
+
 const hours = new Date().getHours(); 
 
 const isMorning = hours >= 4 && hours < 12;
