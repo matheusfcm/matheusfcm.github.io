@@ -10,11 +10,11 @@ const isEvening = hours >= 17 || hours < 4;
 let message = "";
 
 if (isMorning) {
-    message = "Good morning! Have a great day ahead!";
+    message = "Good morning!, Have a great day!";
 } else if (isAfternoon) {
-    message = "Good afternoon! Hope you're having a productive day!";
+    message = "Good afternoon! Hope you had a good lunch!";
 } else if (isEvening) {
-    message = "Good evening! Time to relax!";
+    message = "Good evening! Time to sleep!";
 }
 
 const welcomeDiv = document.getElementById("welcome");
@@ -93,5 +93,30 @@ button.addEventListener('click', () => {
     renderTodos();
 });
 
-renderTodos(); // Call on load
+renderTodos(); 
+const getRandomPokemon = async () => {
+    const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150);
+    const response = await fetch(url);
+    const pokemonObj = await response.json();
+    return pokemonObj;
+};
+
+const renderPokemon = pokemonObj => {
+    const div = document.querySelector('.pokemon-ctr');
+    const img = document.createElement('img');
+    img.src = pokemonObj.sprites.front_default;
+    img.alt = pokemonObj.name;
+    div.append(img);
+    return pokemonObj;
+};
+
+(async () => {
+    try {
+        const pokemon = await getRandomPokemon();
+        renderPokemon(pokemon);
+    } catch (error) {
+        console.log(error);
+    }
+})();
+
 
