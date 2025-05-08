@@ -91,3 +91,15 @@ footer {
     gap: 10px;
     margin-top: 10px;
 }
+.todo-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.todo {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #ecf0f1;
+    border-radius: 6px;
+}

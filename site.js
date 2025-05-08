@@ -58,3 +58,40 @@ setInterval(() => {
     currentImage++;
     showImages();
 }, 5000);
+
+const todoList = document.getElementById('todo-list');
+const input = document.getElementById('new-todo');
+const button = document.getElementById('add-todo');
+
+const renderTodos = () => {
+    // Get the list from local storage
+    const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
+
+    // Clear the li's before we recreate them
+    todoList.innerHTML = '';
+
+    // Create and add new list items to the DOM
+    todos.forEach((todo) => {
+        const li = document.createElement('li');
+        li.textContent = todo.text;
+        li.classList.add('todo');
+        todoList.append(li);
+    });
+};
+
+button.addEventListener('click', () => {
+    // Get the list from local storage
+    const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
+
+    // Add a new item to the list
+    todos.push({ text: input.value, completed: false });
+
+    // Save the list to local storage
+    localStorage.setItem('todo-list', JSON.stringify(todos));
+
+    input.value = '';
+    renderTodos();
+});
+
+renderTodos(); // Call on load
+
