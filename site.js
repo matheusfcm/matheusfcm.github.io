@@ -1,6 +1,7 @@
+//Secret Message
 localStorage.setItem("It's a secret to everybody.", "Hasta la vista Baby.");
 
-
+//Dynamic welcome
 const hours = new Date().getHours(); 
 
 const isMorning = hours >= 4 && hours < 12;
@@ -18,9 +19,13 @@ if (isMorning) {
 }
 
 const welcomeDiv = document.getElementById("welcome");
+
+
 if (welcomeDiv) {
     welcomeDiv.textContent = message;
 }
+
+//Carousel
 const urls = [
     'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     'https://images.pexels.com/photos/933964/pexels-photo-933964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -59,6 +64,9 @@ setInterval(() => {
     showImages();
 }, 5000);
 
+
+
+//To-Do List
 const todoList = document.getElementById('todo-list');
 const input = document.getElementById('new-todo');
 const button = document.getElementById('add-todo');
@@ -94,6 +102,9 @@ button.addEventListener('click', () => {
 });
 
 renderTodos(); 
+
+
+//API FETCH
 const getRandomPokemon = async () => {
     const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150);
     const response = await fetch(url);
